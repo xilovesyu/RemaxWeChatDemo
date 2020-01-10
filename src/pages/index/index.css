@@ -1,0 +1,39 @@
+.nickname {
+  color: #ffffff;
+  font-size: 35px;
+}
+
+.login-tip {
+  color: #ffffff;
+  font-size: 35px;
+  margin-top: 5px;
+}
+
+.app {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.body {
+  margin-top: 30%;
+  background-color: #282c34;
+  font-size: 40px;
+  color: white;
+  border: 1px slategrey solid;
+}
+
+.text {
+  margin-top: 5px;
+}
+
+.input {
+  margin-top: 5px;
+}
+
+.navigation-button {
+  position: fixed;
+  bottom: 15px;
+  width: 710px;
+  padding: 0;
+  margin: 0 auto;
+}
