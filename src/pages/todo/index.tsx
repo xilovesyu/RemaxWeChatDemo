@@ -1,23 +1,46 @@
 import * as React from 'react'
-import { View, Text, Image, Input } from 'remax/wechat'
+import {View, Text, Image, Input, Checkbox, Button} from 'remax/wechat'
 import { useState } from 'react'
+import {inject, observer} from "mobx-react";
+import {Todo} from "@/stores/TodoStore";
 
-export default () => {
-    const [text, setText] = useState('')
-    return (
-        <View>
+export default inject('todoStore')(observer(class Index extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props)
+        this.state= {
+            text: ''
+        }
+    }
+    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+        console.log(this.props.todoStore)
+        const {todos} = this.props.todoStore
+        return (
             <View>
                 <View>
-                    输入的是 <Text>{text}</Text>
+                    {
+                        todos.map((one: Todo, index: number) => {
+                            return (
+                                <Checkbox key={index} checked={one.checked}>{one.text}</Checkbox>
+                            )
+                        })
+                    }
                 </View>
+            <View>
                 <Input
                     className="add-todo-input"
                     placeholder="What needs to be done?"
-                    onInput={e => setText(e.detail.value)}
-                    value={text}
+                    onInput={e => this.setState({text: e.detail.value})}
+                    value={this.state.text}
                 />
-
+                <Button onClick={(e: any) => {
+                    this.props.todoStore.addOneToDo({
+                        text: this.state.text,
+                        checked: false
+                    })
+                }}>添加Todo</Button>
             </View>
         </View>
-    )
-};
+        )
+    }
+})
+)
