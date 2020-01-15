@@ -11,7 +11,6 @@
 
 .app {
   text-align: center;
-  padding: 0 24px;
 }
 
 .body {
@@ -33,7 +32,6 @@
 .navigation-button {
   position: fixed;
   bottom: 15px;
-  width: 710px;
-  padding: 0;
-  margin: 0 auto;
+  width: 100%;
+  padding: 0 5px;
 }
